@@ -1,0 +1,93 @@
+Classification Learning
+
+0R - 
+
+Normal or Reduced, either will achieve an equal accuracy on our training set.
+
+1R
+
+age:
+
+young --> reduced 5/8            
+pre-presbyopic --> reduced 4/8         
+presbyopic --> normal  5/8              accuracy = 14/24 
+
+spectacle-prescri:
+
+myope --> reduced  7/12           
+hypermetrope --> normal  7/12           accuracy = 14/24
+
+astigmatism:
+no --> reduced  6/12	         
+yes  --> normal  6/12                   accuracy = 12/24
+
+Contact-lenses:
+none  -- reduced  11/15            
+soft  --> normal  5/5                  
+hard  --> normal  3/4                   accuracy = 19/24
+
+Contact-lenses has the highest accuracy, and is the best one-attribute
+classifier according to 1R.
+
+
+Decision tree building
+
+Consider goodness score
+age = 14/72, spectacle-prescri = 14/48, astigmatism = 12/48, contact-lenses = 19/48
+
+Consider contact-lenses = none
+
+age:
+young --> reduced 4/4    
+pre-presbyopic --> reduced 4/5  
+presbyopic --> reduced 3/6              accuracy = 11/15   goodness = 11/30
+
+spec-prescrip:
+myope -->  reduced 6/7  
+hypermetrope --> reduced 5/8            accuracy = 11/15   goodness = 11/30
+
+astigmatism:
+yes --> reduced  5/8   
+no --> reduced  6/7                    accuracy = 11/15   goodness = 11/30
+
+Consider contact-lense = hard
+
+age:
+young --> reduced           1/2     
+pre-presbyopic --> normal   1/1     
+presbyopic  -->  normal     1/1         accuracy = 3/4  goodness = 3/4
+
+spectacle-prescri:
+myope  -->  normal          2/3  
+hypermetrope  -->  normal   1/1         accuracy = 3/4  goodness = 3/4
+
+
+astigmatism:
+yes  -->  normal       3/4              accuracy = 3/4  goodness = 3/4
+
+
+
+Consider contact-lenses = none, age = pre-presbyopic
+
+spectacle-prescri:
+myope --> reduced    2/2
+hypermetrope --> reduced  2/3          accuracy = 4/5     goodness = 4/5
+
+astigmatism:
+no -->  reduced  2/2
+yes --> reduced  2/3                   accuracy = 4/5     goodness = 4/5
+
+
+Consider contact-lense = none, age = presbyopic
+
+spectacle-prescri:
+myope   -->  reduced       2/3  
+hypermetrope  --> normal   2/3        accuracy = 4/6    goodness = 4/12
+
+astigmatism:
+no  -->  reduced   2/3        
+yes -->  normal    2/3                accuracy = 4/6    goodness = 4/12
+
+
+We then continue in this way for all possible sub groups
+(so long as you understand (and can reproduce) everything here, you're all set)

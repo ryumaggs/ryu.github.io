@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CS 105 - Lab 1</title>
+
+<style type="text/css" style="display: none !important;">object:not([type]),object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}</style><style type="text/css"></style><style type="text/css"></style></head>
+
+<body>
+<center>
+  <table width="90%">
+    <tbody>
+      <tr> 
+        <td> <table>
+            <tbody>
+
+              <tr> 
+                <td width="816">
+                  <font color="#660000" size="6"><left><b>Lab 1 - WebSubmit / Database Fundamentals</b></left></font> 
+                  <p></p></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr color="black"> 
+
+	  <font color="#660000" size="5"><b><center> Objectives </center></b></font>
+          
+	  <ol>
+            <li>Review <strong>Lab 0</strong></li>
+            <li>Familiarize ourselves with the <strong>WebSubmit</strong> procedure</li>
+            <li>Discussion of a real-world <strong>Database Application</strong></li>
+          </ol>
+
+          <p></p>
+
+          <hr color="black">
+	  <font color="#660000" size="5"><b><center> Lab 0 - Review </center></b></font>
+	  <ol>
+            <li>Did anyone have issues with <strong>Lab 0</strong>?</li>
+            <li>If you haven't done the following, please complete <strong><a href="lab0.html">Lab 0</a></strong> ASAP.</li>
+	    <ul>
+		    <li>Purchase the coursepack</li>
+		    <li><a href="http://www.bu.edu/cs/resources/laboratories/undergraduate-lab/">Set up your CS account</a></li>
+		    <li><a href="http://cs-people.bu.edu/dgs/courses/cs105/">Review Course Policies</a></li>
+		    <li><a href="https://docs.google.com/forms/d/1QtGKqD-q9sr6-g-lJGHNiF3T0pTbvvMmaSGfRUE98MY/viewform">Complete a survey</a></li>
+	    </ul>
+          </ol>
+
+	  <hr color="black"> 
+	  <font color="#660000" size="5"><b><center> Piazza  </center></b></font> 
+
+	  <p>
+	  Piazza is a social network site developed to facilitate communication between students, teaching fellows, and professors.<br>
+	  <br>
+	  If you don't already have an account, you should make one now.<br>
+	  You can access Piazza <a href="https://piazza.com/">here</a>.
+	  </p>
+
+          <p>There are some really cool features of Piazza that we want to emphasize:</p>
+
+          <ul>
+            <li>Anonymous Posts</li>
+            <li>Private Posts</li>
+            <li>Customizable Notifications: emails, apps, etc</li>
+            <li>Extremely Fast Response Time</li>
+          </ul>
+
+          <hr color="black">
+	  <font color="#660000" size="5"><b><center> Practice Exercise: WebSubmit </center></b></font>
+
+	<br>
+          
+	  </b></font> <p> This is where you will be submitting your homework: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105"> WebSubmit </a><br>
+  	  <b>Reminder: All of your homeworks should be submitted in plain-text form!</b>
+
+          <p>Please complete the folliwng to familiarize yourself with the procedure:</p>
+
+          <ol>
+	    <li>Open up Notepad or WordPad from the Accessories folder on Windows 
+		<br>(Start &gt; All Programs &gt; Accessories)</li>
+	    <li>Type "Hello, World!" in a new text file.</li>
+            <li>Save the file on your desktop as <code>lab1.txt</code>.</li>
+            <li>Login to <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105"> WebSubmit </a> using your Kerberos password.</li>
+            <li>Submit your <code>lab1.txt</code> file to the 
+	        lab01 project in WebSubmit.</li>
+
+            <li>View your file in WebSubmit to make sure that you
+	        submitted the correct file.</li>
+            <li>Change the content of the file to "Oh Hey!", 
+	        resubmit it, and view it again.</li>
+          </ol>
+
+          More information about creating a plain-text file is <a href="http://cs-people.bu.edu/dgs/courses/cs105/assignments/plain_text.html">here</a></b><br>
+
+	  <p></p>
+
+          <hr color="black">
+	  <font color="#660000" size="5"><b><center> Practice Exercise: Understanding keys and constraints  </center></b></font>
+
+          <p>
+	  Consider the following instances of three relations:
+	  <br><br>
+	
+	<table valign="top">
+	<tbody>
+	<tr>
+   		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+   		<td>Passenger</td>
+   		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+   		<td>Flight</td>
+   		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+   		<td>BookedOn</td>
+	</tr>
+
+	<tr valign="top">	
+   		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+   		<td><table border="1" cellpadding="10">
+
+     <tbody><tr>
+     <td><b>id</b></td>
+     <td><b>name</b></td>
+     <td><b>city</b></td>
+     </tr>
+
+     <tr>
+     <td>001</td>
+     <td>Tom Brady</td>
+     <td>San Mateo, CA</td>
+     </tr>
+
+     <tr>
+     <td>002</td>
+     <td>David Ortiz</td>
+     <td>Santo Domingo, Dom. Rep</td>
+     </tr>
+
+     <tr>
+     <td>003</td>
+     <td>Kevin Youkilis</td>
+     <td>Cincinnati, Oh</td>
+     </tr>
+
+     <tr>
+     <td>004</td>
+     <td>Ray Allen</td>
+     <td>Riverside, CA</td>
+     </tr>
+
+     <tr>
+     <td>005</td>
+     <td>Kevin Garnett</td>
+     <td>Greenville, SC</td>
+     </tr>
+
+     <tr>
+     <td>006</td>
+     <td>Zdeno Chara</td>
+     <td>Trencin, SVK</td>
+     </tr>
+
+   </tbody></table><code>
+   </code></td>
+
+   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+   
+   <td>
+   <table border="1" cellpadding="10">
+     <tbody><tr>
+     <td><b>number</b></td>
+     <td><b>origin</b></td>
+     <td><b>destination</b></td>
+     </tr>
+
+     <tr>
+     <td>DL5882</td>
+     <td>Boston, MA</td>
+     <td>Indianapolis, IN</td>
+     </tr>
+
+     <tr>
+     <td>BA215</td>
+     <td>London, United Kingdom</td>
+     <td>Boston, MA</td>
+     </tr>
+
+     <tr>
+     <td>AA573</td>
+     <td>Boston, MA</td>
+     <td>Miami, FL</td>
+     </tr>
+
+     <tr>
+     <td>LH422</td>
+     <td>Frankfurt, Germany</td>
+     <td>Boston, MA</td>
+     </tr>
+
+     <tr>
+     <td>UA717</td>
+     <td>Boston, MA</td>
+     <td>Los Angeles, CA</td>
+     </tr>
+
+     <tr>
+     <td>UA898</td>
+     <td>Beijing, China</td>
+     <td>Boston, MA</td>
+     </tr>
+
+
+
+   </tbody></table>
+
+   </td>
+
+   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+   <td>
+   <table border="1" cellpadding="10">
+     <tbody><tr>
+     <td><b>person</b></td>
+     <td><b>flight</b></td>
+     </tr>
+
+     <tr>
+     <td>005</td>
+     <td>UA898</td>
+     </tr>
+
+     <tr>
+     <td>002</td>
+     <td>AA573</td>
+     </tr>
+
+     <tr>
+     <td>005</td>
+     <td>UA717</td>
+     </tr>
+
+     <tr>
+     <td>006</td>
+     <td>BA215</td>
+     </tr>
+
+     <tr>
+     <td>001</td>
+     <td>DL5882</td>
+     </tr>
+
+     <tr>
+     <td>004</td>
+     <td>DL5882</td>
+     </tr>
+
+   </tbody></table>
+   </td>
+   
+</tr>
+
+</tbody></table>
+    </p><p>
+
+    <b>Notes:</b> 
+    </p><ul>
+    <li>Every person in the <i>Passenger</i> relation has a 
+        unique value for the <i>id</i> attribute.
+    </li><li>Every flight in the <i>Flight</i> relation has a 
+        unique value for the <i>number</i> attribute.
+    </li><li>The BookedOn relation captures the relationships between 
+        people and the flights on which they are booked.  
+	<ul><li>Example: the tuple (001, DL5882) in BookedOn tells us that
+	Tom Brady (001) is booked on a flight from
+	Boston to Indianapolis (DL5882).</li></ul>
+    </li></ul>
+
+    Given these relations, answer each of the following questions:
+    <ol type="a">
+    <li>Select a possible primary key for each of these relations.
+    </li><li>Is the combination <i>(number, origin)</i> a <u>key</u> 
+        for the <i>Flights</i> relation? 
+    </li><li>Is the combination <i>(number, origin)</i> 
+        a <u>candidate key</u> 
+        for the <i>Flights</i> relation?  
+    </li><li>Two of the attributes in these relations
+        appear to be <u>foreign keys</u>.  Which ones? 
+	</li><li>Say that you were inserting a row into any of the tables above, and that row violated the <u>uniqueness</u> constraint, give an example of what that row would look like.
+	</li><li>Say that you were inserting a row into any of the tables above, and that row violated the <u>referential integrity</u> constraint, give an example of what that row would look like.
+    </ol>
+	  
+	  <p></p>
+
+          <hr color="black">
+	  <font color="#660000" size="5"><b><center> Practice Exercise: A Real-World Database Application </center></b></font>
+
+          <p>
+	Imagine that you've just been hired to create a real-world database application, an online catalog for a library.</p>
+
+<ol type="1">
+   <li>Describe the types of data that could be stored in this type of database.
+   </li><li>Give your client an example of how transactions would be helpful for this application.
+   </li><li>Explain to your client what advantages a database system might have in this context.
+	<ul><li>Hint: think about the four key DBMS functions mentioned in the lecture notes on database fundamentals.</li></ul>
+   </li><li>Develop at 3-5 schema for tables that you might use for this application. 
+	<ul>
+		<li>Hint: remember that schemas contain the tables name and the names of each column in that table</li>
+		<li>Pro-tip: keep your table and column names succint, such as: Car(color, make, model, num_doors)</li>
+		<li>Hint: tables will generally either describe:
+		<ul>
+			<li> Entities - such as Passenger or Flight</li>
+			<li> Relationships between Entities - such BookedOn</li>
+		</ul></li>
+	</ul>
+   </li><li>For each table, which field would you pick as a primary key?
+	<ul><li>Example: if we have a table of students, the BU
+       id number can serve as a primary key</li></ul>
+   </li><li>Briefly explain to your client what primary and foreign keys are, and how they are used in this application.
+   </li></ol>
+
+	<center>
+            <p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a><br></p>
+	</center>
+
+
+
+    </td></tr></tbody>
+  </table>
+</center>
+
+<style type="text/css"></style></body></html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>CS 105 - Lab 10</title>
+<style type="text/css"></style></head>
+<body>
+	<center>
+		<table width="90%">
+			<tbody>
+				<tr>
+					<td>
+						<table>
+							<tbody>
+								<tr>
+									<td width="816">
+										<font color="#660000" size="6"><left><b>Lab 10 - Classification Learning</b></left></font>
+									<p></p></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><font color="#660000" size="5"><b>Objectives</b></font></center>
+						<br>
+						
+						<ol>
+							<li>Classification Learning Review/Practice</li>
+							<li>Suggestions for The Final Project</li>
+						</ol>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><font color="#660000" size="5"><b>The Dataset</b></font></center>
+						<br>
+						
+						<div align="center">
+							
+							<p align="left">Here is a table with <strong>
+							<a href="http://archive.ics.uci.edu/ml/datasets/Lenses">contact lenses </a></strong> related data:</p>
+							<table border="1"><tbody>
+								<tr>
+									<td><div align="center"><strong>AGE</strong></div></td>
+									<td><div align="center"><strong>SPECTACLE-PRESCR</strong></div></td>
+									<td><div align="center"><strong>ASTIGMATISM</strong></div></td>
+									<td><div align="center"><strong>TEAR-PRODUCT-RATE</strong></div></td>
+									<td><div align="center"><strong>CONTACT-LENSES</strong></div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">young</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">young</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">soft</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">young</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">young</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">hard</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">young</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">young</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">soft</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">young</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">young</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">hard</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">pre-presbyopic</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">pre-presbyopic</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">soft</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">pre-presbyopic</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">pre-presbyopic</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">hard</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">pre-presbyopic</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">pre-presbyopic</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">soft</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">pre-presbyopic</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">pre-presbyopic</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">presbyopic</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">presbyopic</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">presbyopic</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">presbyopic</div></td>
+									<td><div align="right">myope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">hard</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">presbyopic</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">presbyopic</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">no</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">soft</div></td>
+									
+								</tr>
+								
+								<tr>
+									<td><div align="right">presbyopic</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+								<tr>
+									<td><div align="right">presbyopic</div></td>
+									<td><div align="right">hypermetrope</div></td>
+									<td><div align="right">yes</div></td>
+									<td><div align="right">normal</div></td>
+									<td><div align="right">none</div></td>
+								</tr>
+								
+							</tbody>
+							</table>
+						</div>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						<center><font color="#660000" size="5"><b>Classification Learning</b></font></center>
+						<br>
+						
+						<p>We want to create a model which will predict a person's tear-production rate.
+							<ul>
+								<li>What value would 0R choose?</li>
+								<li>Which is the best one-attribute classifier according to 1R?</li>
+								<li>After running the algorithm from lecture, what decision tree would we get?</li>
+							</ul>
+						</p>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><font color="#660000" size="5"><b>Some Suggestions For The Final Project</b></font></center>
+						<br>
+						
+						<p align="left">The final project has been posted
+							<a href="http://cs-people.bu.edu/dgs/courses/cs105/assignments/project.html">
+							here</a>. It is an open project -- you can choose the dataset(s)
+							you are interested in. While there are no constraints on the datasets
+						you will choose, here are some thoughts/recommendations.</p>
+						<p align="left">Choosing an appropriate dataset is the
+							most important step. Unfortunately, some choices of datasets are not
+							suitable for mining meaningful patterns. For instance, consider
+							<a href="http://data.un.org/Data.aspx?d=WDI&f=Indicator_Code:NY.GDP.MKTP.KD.ZG">
+							GDP growth data</a> from <a href="http://data.un.org/Explorer.aspx">
+							UNData</a>: World Development Indicators. If I want to model the GDP growth for any given country, why might this dataset not work?<br>
+						</p>
+						<p align="left"><i>You may be able to come up with a model to describe GDP growth of a specific country, 
+							but intuitively, finding a model that <emph>fits multiple countries</emph> is quite hard. To obtain a model that can generalize 
+							to previously unseen countries, we would need additional attributes that describe the countries and that might be relevant to their GDP.
+							<br><br>
+							Again, before looking for a specific dataset, we should have a well-defined problem.
+						</i></p>
+						
+						<p align="left">To choose appropriate datasets from the thousands that 
+							are available online, a better approach is to have a question in your 
+							mind first and look around for information that seems relevant. For 
+							instance, you could explore the GDP growth data from different perspectives 
+							(in combination with other datasets) by discussing the importance of
+							agricultural and industrial growth in the general GDP growth] or the 
+							relationship between GDP growth and life expectancy.</p>
+						
+						<p align="left">We recommend that you steer away from time series data, as there are typically not many attributes recorded at each time step.  
+							This could leave you with little data to actually mine. However if you feel that you have found a time series data set with enough interesting information, by all means, propose your ideas.</p>
+						
+						<br>
+							<hr color="black"> 
+							<br>			
+							<center><p><font color="#660000" size="5"><b>Submission</b></font></p></center>
+							
+							<br>
+							<p align="justify">There is nothing to submit for this lab, though I strongly recommend you complete these problems.</p>
+						
+						<hr color="black">
+						
+						<p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a></p>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+</body>
+</html>								

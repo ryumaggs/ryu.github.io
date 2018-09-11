@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>CS 105 - Lab 7 </title>
+	
+<style type="text/css"></style><style type="text/css"></style></head>
+
+<body>
+	<center>
+		<table width="90%">
+			<tbody>
+				<tr>
+					<td>
+						<table>
+							<tbody>
+								<tr>
+									<td width="816">
+										<font color="#660000" size="6"><left><b>Lab 7 - Python &amp; SQLite</b></left></font>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><font color="#660000" size="5"><b>Accessing SQLite from Python</b></font></center>
+						<br>
+						
+						<p align="left">For this lab we will be using the <a href="http://cs-people.bu.edu/dgs/courses/cs105/13fall/labs/files/movie.sqlite">movie.sqlite</a> database.
+						Below we will assume that you've saved it to the Z: drive.</p>
+						
+						<p>For your reference, the database has the following schema:</p>
+						<div align="center">
+							<table width="450" border="1">
+								<tbody><tr>
+									<td bgcolor="#CCFFCC">
+										<p align="center">Actor(<u>actor id</u>, <u>movie id</u>)<br>
+											Director(<u>director id</u>, <u>movie id</u>)<br>
+											Movie(<u>id</u>, name, year, rating, runtime, genre, earnings_rank)<br>
+											Oscar(movie_id , <u>person_id</u> , <u>type</u> , <u>year</u>)<br>
+											Person(<u>id</u> , name , dob , pob)<br>
+										</td>
+									</tr></tbody>
+								</table>
+							</div>
+							
+							<p align="left">
+								Follow these steps in order to access SQLite from Python:
+								<ol>
+									<li><font face="Courier New, Courier, mono">import sqlite3</font></li>
+									<li><font face="Courier New, Courier, mono">db = sqlite3.connect('name of database file')</font>
+										<ul><li>For example, <font face="Courier New, Courier, mono">db = sqlite3.connect('z:\\mydb.sqlite')</font></li></ul>
+									</li>
+									<li><font face="Courier New, Courier, mono">cursor = db.cursor()</font></li>
+									<li><font face="Courier New, Courier, mono">command = '''&ltSQL query&gt'''</font></li>
+									<li><font face="Courier New, Courier, mono">cursor.execute(command, [parameters])</font></li>
+										<ul><li>Note: the second argument is optional depending on whether you are performing a parameterized query or not.</li></ul>
+									<li>Process the results, maybe using on of the following:
+										<ul>
+											<li><font face="Courier New, Courier, mono">tuple = cursor.fetchone() </font></li>
+											<li><font face="Courier New, Courier, mono">for tuple in cursor: ... </font></li>
+										</ul>
+									</li>
+									<li><font face="Courier New, Courier, mono">db.commit()</font></li>
+									<li><font face="Courier New, Courier, mono">db.close()</font></li>
+								</ol>
+							</p>
+							
+							
+							<p align="left">
+								Recall that we can parameterize our SQL queries to prevent SQL injection.  For example:
+								<ul>
+									<li>input_name = input("Please enter the name of an actor: ")</li>
+									<li><pre>command = '''SELECT dob, pob<br>     FROM Person<br>     WHERE name LIKE ?;'''</pre></li>
+									<li>cursor.execute(command,input_name)</li>
+								</ul>
+							</p>
+							
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center><font color="#660000" size="5"><b>Practice</b></font></center>
+							<br>
+							
+							<p align="left"><strong>1</strong>. For this exercise, you will write <b>getMovies.py</b>, a program which connects to the movies.sqlite database, queries the database for all Steven Spielberg
+							films, and prints them to the screen in the following format:</p>
+							
+							
+							and include the steps stated
+							above. Write a query to find the name and duration of all Steven Spielberg
+							films. Print the results on the screen 
+							
+							<p align="left"><font face="Courier" size="2">&nbsp;&nbsp;&nbsp; Jaws ... 124<br>
+								&nbsp;&nbsp;&nbsp; Raiders of the Lost Ark ... 115<br>
+								&nbsp;&nbsp;&nbsp; E.T. the Extra-Terrestrial ... 115<br>
+								&nbsp;&nbsp;&nbsp; Indiana Jones and the Temple of Doom ... 118<br>
+								&nbsp;&nbsp;&nbsp; Indiana Jones and the Last Crusade ... 127<br>
+								&nbsp;&nbsp;&nbsp; Jurassic Park ... 127<br>
+								&nbsp;&nbsp;&nbsp; Schindler's List ... 197<br>
+								&nbsp;&nbsp;&nbsp; Lost World: Jurassic Park, The ... 129<br>
+								&nbsp;&nbsp;&nbsp; Saving Private Ryan ... 170<br>
+								&nbsp;&nbsp;&nbsp; Minority Report ... 145<br>
+								&nbsp;&nbsp;&nbsp; Catch Me If You Can ... 141<br>
+								&nbsp;&nbsp;&nbsp; Indiana Jones and the Kingdom of the Crystal Skull ... 122<br>
+								&nbsp;&nbsp;&nbsp; War of the Worlds ... 116<br>
+							&nbsp;&nbsp;&nbsp; Lincoln ... 150<br></font></p>
+							
+							Hints:
+							<ul>
+								<li>Build your program piece by piece, verify that one piece works before moving on to the next</li>
+								<li>Start by connecting to the movies.sqlite database (look above for how to do that).</li>
+								<li>You can test if you are connected to the database with a simple "SELECT * FROM ... " query and fetchone().</li>
+								<li>Next move on to writing the SQL query, you can open up SQLite if it helps.</li>
+								<li>Finally work on printing the results to the screen.</li>
+								<li>Don't forget to commit to and close the database at the end of your program.</li>
+							</ul>
+							
+							<p align="left"><strong>2</strong>. Instead of printing the result directly
+								on the screen, let's write the result to a txt file (such that we can
+							do some further processing if needed). To write to a file, you need to use the following statements:<br></p>
+							
+							<p align="left">
+								<font face="Courier" size="2">	&nbsp;&nbsp;&nbsp; outfile = open('output.txt', 'w') </font>&nbsp;&nbsp;&nbsp;#You can change the output file directory<br>
+								<font face="Courier" size="2">	&nbsp;&nbsp;&nbsp; print(...,file=outfile)</font>&nbsp;&nbsp;&nbsp;#You should change"..."with what you want to print.<br>
+								<font face="Courier" size="2">	&nbsp;&nbsp;&nbsp; outfile.close()</font>
+							</p>
+							
+							<p align="left"><strong>3</strong>. Now let's modify the program to allow the user to enter the name of the 
+								director and perform the query to find the name	and duration of all films directed by the director. Use a 
+							parameterized query.</p>
+							
+							<p align="left"><strong>Optional</strong>. Based on Exercise 3, let's check the query results. If there is 
+								no result for the SQL query, give the user a message like "There is no movie directed by ... was found 
+							in our database.".</p>
+							
+							<br>
+							<hr color="black"> 
+							<br>			
+							<center><p><font color="#660000" size="5"><b>Submission</b></font></p></center>
+							
+							<br>
+							<p align="justify">Please submit your <b>getMovies.py</b> on websubmit under Lab 7.<br>
+							For your convenience: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105">WebSubmit</a>
+						</p>
+						
+						<hr color="black">
+						<p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a></p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+</body>
+</html>							

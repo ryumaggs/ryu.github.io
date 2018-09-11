@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CAS CS 105 - Lab 2</title>
+    <style type="text/css"></style><style type="text/css"></style>
+  </head>
+
+  <body>
+    <table>
+      <tbody>
+	<tr>
+	  <td width="816">
+	    <font color="#660000" size="6"><left><b>Lab 2 - Introduction to SQL</b></left></font>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+    
+    <p></p>
+    <hr color="black">
+    
+    <font color="#660000" size="5"><b><center>Objectives</center></b></font>
+    <ol>
+      <li>Get to know <strong>SQLite</strong> environment.</li>
+      <li>Take a look at a dataset </li>
+      <li>Practice queries</li>
+      <li>Submission</li>
+    </ol>
+
+    <p></p>
+    <hr color="black">
+    
+    <font color="#660000" size="5"><b><center>1. Get to know the SQLite environment </center></b></font>
+    
+    <p>
+      In the lab, you will be using SQLite, a lightweight, open-source RDBMS. More precisely, 
+      SQLite is a database library that other applications can use to manage a relational 
+      database on their behalf.</br>
+		</br>
+		We will be using an application called SQLite Manager, which is an add-on for Firefox. 
+		It provides a user-friendly way to work with a relational database that is managed by SQLite.
+    </p>
+    
+    <p><b>Downloading the necessary software</b><br></p>
+
+    <ol>
+      <li>If you don't already have Firefox installed on your machine, you should 
+	<a href="http://www.mozilla.org/en-US/firefox/new/" target="top">download and install it</a> now.</li>
+	<ul><li><a href="https://support.mozilla.org/en-US/kb/how-download-and-install-firefox-windows">Tutorial</a> for installation if you need help</li></ul>
+      <li>Once you have Firefox installed, start it up and use <b>Firefox</b> to go to the following page:
+	<a href="https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/">https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/</a>.</li>
+      <li>Click the green <i>Add to Firefox</i> button to add SQLite Manager to Firefox. 
+	If asked, click the <i>Install Now</i> button.</li>
+      <li>Close and relaunch Firefox to allow the add-on to take effect.</li>
+    </ol>
+
+    <p><b>Downloading the necessary files</b><br>
+	<ol>
+		<li>Download the university database by right-clicking on the following link: 
+      		<a href="http://cs-people.bu.edu/dgs/courses/cs105/13fall/labs/files/university.sqlite">university.sqlite</a></li>
+      		<li>Use the <i>Save link as...</i> (or equivalent) option to save it somewhere that you will be able to 
+      		find it later.</li>
+      		<ul><li>This file contains all of the tables from the university database. </li>
+		<li>Use SQLite to open/edit the file, <b>not</b> a text editor.</li></ul>
+	</ol>
+    </p>
+
+
+    <p><b>Using SQLite Manager</b><br>
+      <ol>
+	<li>Start up Firefox.</li>
+	<li>If the SQLite icon appears in the menubar, click it to open SQLite Manager.</li>
+	<ul><li>If it does not:</li>
+		<ul>
+			<li>Right click the top of the firefox window and make sure "Menu Bar" is checked off</li>
+			<li>Click on <i>Tools-&gt;SQLite Manager</i></li>
+		</ul>
+	</ul>
+	<li>In the SQLite Manager window, use the <i>Database-&gt;Connect Database</i> 
+	  menu option to find and open the <i>university.sqlite</i> database file that you downloaded above.</li>
+	<li>To explore the contents of the database, click on the name of a table in the left-hand navigation bar, 
+	  and then click on either the <i>Structure</i> or <i>Browse &amp; Search</i> tabs. <br><b>Note:</b> SQLite
+	  adds a <i>rowid</i> column to each table. You should ignore this column for the purposes of this assignment.</li>
+	<li>Use the <i>Execute SQL</i> tab to perform queries on the database, replacing the sample command that is 
+	  provided (if any) with your  own SQL command, and clicking the <i>Run SQL</i> button. </li>
+    </ol></p>
+
+    <p></p>
+    <hr color="black">
+    
+    <center>
+      <p><font color="#660000" size="5"><b><strong>2. A List of the Tables in our Database</strong></b></font></p>
+    </center>
+
+    <font color="#660000" size="5"><b></b></font> <p align="left">
+    </p>
+
+      <center><table width="75%" border="1">
+	<tbody><tr>
+            <td width="76%" bgcolor="#CCFFCC"> <p align="center">
+		Student(id,name)<br>
+		Department(name, office)<br>
+		Room(id, name, capacity)<br>
+		Course(name, start, end, room)<br>
+		MajorsIn(student, dept)<br>
+		Enrolled(student, course, credit_status)</p></td>
+	</tr></tbody>
+      </table></center>
+  
+	<br>
+
+    <p></p>
+    <hr color="black">
+
+    <center>
+      <p><font color="#660000" size="5"><b>3. Practice queries</b></font></p>
+    </center>
+
+      <p align="justify"><b>1. Retrieving a whole table</b></br>  
+                </br>
+		A query result is always in the form of the table. Try the following query: </p>
+
+      <center><table border="1">
+	<tbody><tr>
+	    <td bgcolor="#ccffcc" height="48"><font face="Courier New, Courier, mono">
+		SELECT *</font><font face="Courier New, Courier, mono"><br>FROM Enrolled<em>;</em></font>
+	    </td>
+	</tr></tbody>
+      </table></center>
+
+      <br>
+
+      <p align="justify"><b>2. Retrieve specific columns</b><br>
+	<br>
+	If you only need some of the attributes, you should
+	specify them after SELECT. For example the query below retrieves credit_status
+	column of Enrolled table.</p>
+
+      <center><table border="1" id="AutoNumber1" bgcolor="#CCFFCC">
+	<tbody><tr>
+	    <td><font face="Courier New, Courier, mono">SELECT credit_status<br>
+		FROM Enrolled<em>;</em> </font></td>
+	</tr></tbody>
+      </table></center>
+      
+      <p align="justify"><b>&#9658;Exercise 1: </b>List the names of all departments in the Department table.</p>
+      <br>
+
+      <p align="justify"><b>3. Retrieve specific rows.</b><br>
+	<br>
+	Write a query for retrieving all students that major in <i>comp sci</i>. 
+	Now we should use the WHERE clause in order to specify the properties of the rows we want to retrieve.</p>
+      
+      <center><table border="1">
+	<tbody><tr>
+	    <td bgcolor="#ccffcc" height="48"><font face="Courier New, Courier, mono">SELECT *<br>FROM MajorsIn<br>
+		WHERE dept = 'comp sci'<em>;</em></font></td>
+	</tr></tbody>
+      </table></center>
+
+      <p align="justify"><b>&#9658;Exercise 2: </b>Write a query that gives the name and capacity for the room with id = 4000.</p>
+      <br>
+
+      <p align="justify"><b>4. Logical Operators.</b><br>
+	<br>
+
+	Try the following query:</p>
+      <center><table border="1">
+	<tbody><tr>
+	    <td bgcolor="#ccffcc" height="48"><font face="Courier New, Courier, mono">SELECT student<br>
+		FROM MajorsIn<br>
+		WHERE dept = 'mathematics' OR dept = 'english';</font></td>
+	</tr></tbody>
+      </table></center>
+      <p align="justify">What does this query do?</p>
+
+
+      <p align="justify"><b>&#9658;Exercise 3: </b>Write a query that returns the capacity of all rooms whose id's are greater than 3000 and less than 6000</p>
+
+
+<!--
+      <p align="justify"><b>&#9658;Exercise 3: </b>Write a query listing the IDs of the rooms that are not in CAS building.
+	<ul align="justify"><li><b>Hint:</b> You need the LIKE keyword whenever you use wildcards</li>
+	<li><b>Hint:</b> You might use something of the form "... NOT LIKE ..."</li></ul>
+	</p>
+-->	
+
+      <br>
+
+	<p align="justify"><b>5. Pattern Matching</b><br>
+	<br>
+
+	Now try the following query:</p>
+      <center><table border="1">
+	<tbody><tr>
+	    <td bgcolor="#ccffcc" height="48">
+	      <p><font face="Courier New, Courier, mono">SELECT *<br>
+		  FROM Course<br>
+		  WHERE name LIKE 'CS 1%';<br>
+	    </font></p></td>
+	</tr></tbody>
+      </table></center>
+
+      <p align="justify">What does this query do?</p>
+
+	<!--
+      <p align="justify"><b>&#9658;Exercise 4: </b>Write a query to return the capacity of all rooms in CAS</p>
+	-->
+
+      <p align="justify"><b>&#9658;Exercise 4: </b>Write a query listing the IDs of the rooms that are not in CAS building.
+	<ul align="justify"><li><b>Hint:</b> You need the LIKE keyword whenever you use wildcards</li>
+	<li><b>Hint:</b> You might use something of the form "... NOT LIKE ..."</li></ul>
+	</p>
+
+	</p>
+
+      <p align="justify"><b>6. Intro to Aggregate queries</b><br>
+	<br>
+	Now try the following query:</p>
+
+      <center><table border="1">
+	<tbody><tr>
+	    <td bgcolor="#ccffcc" height="48">
+	      <p><font face="Courier New, Courier, mono">SELECT COUNT(*)<br>
+		  FROM Enrolled<br>
+		  WHERE credit_status = 'grad';<br>
+	    </font></p></td>
+	</tr></tbody>
+      </table></center>
+      <p align="justify">What does this query do?</p>
+
+	<p align="justify">Now try the following query:</p>
+      <center><table border="1">
+	<tbody><tr>
+	    <td bgcolor="#ccffcc" height="48">
+	      <p><font face="Courier New, Courier, mono">SELECT MIN(capacity)<br>
+		  FROM Room;<br>
+	    </font></p></td>
+	</tr></tbody>
+      </table></center>
+      <p align="justify">What does this query do?</p>
+
+      <p align="justify"><b>&#9658;Exercise 5: </b>AVG works syntactically just like COUNT and MIN. Write a query to return the average capacity of all rooms in CAS</p>
+
+      <br>
+	
+      <!--
+	 <p align="justify"><b>6. Subqueries</b><br>
+	   <br>							  
+	   The following query lists the names of the students that do not
+	   major in comp sci:</p>
+	 
+	 <table border="1" cellpadding="2" cellspacing="1" id="AutoNumber3" bgcolor="#CCFFCC">
+	   <tbody><tr>
+	       <td><font face="Courier New, Courier, mono">SELECT name<br>FROM
+		   Student<br>WHERE id NOT IN (SELECT student<br>
+		   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		   FROM MajorsIn<br> 
+		   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		   WHERE dept = 'comp sci');</font></td>
+	   </tr></tbody>
+	 </table>
+    
+    
+    <p align="left">Would this query give us the same results?</p>
+
+    <center>
+      <table border="1" cellpadding="2" cellspacing="1" id="AutoNumber3" bgcolor="#CCFFCC">
+	<tbody><tr>
+	    <td><font face="Courier New, Courier, mono">SELECT name<br>FROM
+		Student<br>WHERE id IN (SELECT student<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		FROM MajorsIn<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		WHERE dept != 'comp sci');</font></td>
+	</tr></tbody>
+      </table>
+    </center>
+    
+    <br>
+    <p align="justify"><b>7. More complex queries</b></p>
+    <p align="justify"><b>&#9658;Exercise 5: </b>Write a query listing all the rooms in CAS that their capacity 
+      is larger than 50 seats below the average of all the rooms or more ( capacity &gt;= avg - 50 ).</p>
+
+    -->
+
+    <p></p>
+    <hr color="black">
+
+    <font color="#660000" size="5"><b><center>4. Submission</center></b></font>
+	
+	<br>
+    	<p align="justify"><b>Please submit your answers to Exercises 1-5 in a text file on websubmit under Lab 2</b>
+		<ul align="justify">
+			<li>Make sure that any queries you were asked to write work in SQLite.</li>
+			<li>You don't have to write a response for the "What does this query do?" questions, 
+			but I recommend asking yourself why each one gave the results that it did.</li>
+			<li>For your convenience: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105">WebSubmit</a></li>
+		</ul>
+	</p>
+	<br>
+
+      <center>
+	<p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a><br></p>
+      </center>
+
+  </body>
+</html>

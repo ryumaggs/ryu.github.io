@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CS 105 - Lab 5 </title>
+    <style type="text/css"></style><style type="text/css"></style>
+  </head>
+  <body>
+  <body>
+    <center>
+      <table width="90%">
+	<tbody>
+	  <tr>
+	    <td> 
+	      <table>
+		<tbody><tr><td width="816">
+		      <font color="#660000" size="6"><left><b>Lab 5 - Python Fundamentals II</b></left></font>
+		</td></tr></tbody>
+	      </table>
+	      
+	      <br>
+	      <hr color="black"> 
+	      <br>
+	      
+	      <center><font color="#660000" size="5"><b>Objectives</b></font></center>
+	      
+	      <br>
+	      
+	      <ol>
+		<li>Review of numeric data types and operations.</li>
+		<li>Review of <strong>for</strong> Loops.</li>
+		<li>Practice with both.</li>
+	      </ol>
+	      
+	      <br>
+	      <hr color="black"> 
+	      <br>
+	      <center><font color="#660000" size="5"><b>Working With Numbers</b></font></center>
+	      
+	      <p>Like the last lab, try typing the following into the IDLE shell and seeing what happens:</p>
+	      
+	      <ul>
+		<li>x=6</li>
+		<li>y=3</li>
+		<li>type(x)</li>
+		<li>type(y)</li>
+		<li>y=3.5</li>
+		<ul><li>Note: in Python, values are typed, but variables are not.  
+		    This means it is okay to change the type of the value assigned to a variable.</li></ul>
+		<li>type(y)</li>
+		<li>int(y)</li>
+		<li>type(y)</li>
+		<ul><li>Note: Type conversion function does not change the type of the value stored in memory.</li></ul>
+		<li>z=round(y)</li>
+		<li>print(x,y,z)</li>
+		<li>print(x/z)</li>
+		<li>print(x//z)</li>
+		<li>print(int(x/z))</li>
+		<li>print(x%z)</li>
+		<li>print(x/y)</li>
+		<li>print(x//y)</li>
+		<li>y=3</li>
+	      </ul>
+	      
+	      <br>
+	      <hr color="black"> 
+	      <br>
+	      <center><font color="#660000" size="5"><b>Exercise 1</b></font></center>
+	      <br>
+	      
+	      <p>For this exercise you'll be writing <b>changeMaker.py</b>, 
+		a program that computes how to give change using the <strong>fewest</strong> coins.
+		<br>Your program should:
+		<ul>
+		  <li>Ask the user for the amount of change</li>
+		  <li>Determine how many of each coin you will need</li>
+		  <li>Output the results as shown below:</li>
+		</ul>
+	      </p>
+	      
+	      <p><font color="blue">Enter the total amount in cents (&lt; 100):</font> 33<br>
+		<font color="blue">
+		  Here's the change that uses the fewest coins:<br>
+		  pennies: 3<br>
+		  nickels: 1<br>
+		  dimes: 0<br>
+		  quarters: 1<br>
+		</font>
+	      </p>
+	      
+	      <p>Notes and Hints:
+		<ul>
+		  <li>For each coin you will need to do the following
+		    <ul>
+		      <li>Find the number of coins of that value you'll
+		      need (integer division)
+			<ul><li>ex. the number of quarters is the total//25</li></ul></li>
+		      <li>Find the remaining change once you've taken those
+		      coins out (modulus)
+			<ul><li>Remember the modulus operator gives you the <u>remainder</u> of a division</li>
+			  <li>ex. the change left after taking quarters out is the total%25</li></ul></li>
+		    </ul>
+		  </li>
+		  <li>Don't try to use a for loop, this will only complicate things.</li>
+		  <li>Try working out the math first, then the pseudocode, and <u>then</u> write the program.</li>
+		  <li>You may assume that the number entered by the user is a positive integer less than 100.</li>
+		  <li>US coins have the following values: pennies = 1, nickels = 5, dimes = 10, quarters = 25.</li>
+		</ul>
+	      </p>
+	      
+	      <br>
+	      <hr color="black"> 
+	      <br>
+	      
+	      <center><font color="#660000" size="5"><b>For Loops</b></font></center>
+	      
+	      <br>
+	      <p>Recall that for loops have the following syntax (indentation is important):<br>
+		<font face="Courier New, Courier, mono">
+		  <pre>for &lt;variable&gt; in &lt;sequence&gt;:
+		    <br>	&lt;statements&gt;</pre>
+		</font>
+	      </p>
+	      
+	      <p align="justify"><strong>Example: </strong></p>
+	      <pre>i = 1
+		<br>for j in [1,2,3,4,5]:
+		<br>	i = i * j
+		<br>print(i)
+	      </pre>
+	      <p>What does the program compute? 
+		Try changing it so that the user decides at which number the program stops.
+		<ul>
+		  <li>For this you will need eval(input("...")) and range(...)</li>
+		</ul>
+	      </p>
+	      
+	      <br>
+	      <hr color="black"> 
+	      <br>
+	      <center><font color="#660000" size="5"><b>Exercise 2</b></font></center>
+	      <br>
+	      
+	      <p>For this exercise you will write <b>power.py</b>, 
+		a program that gives the result of one number raised to the power of another number.
+		
+		<br>Your program should:
+		<ul>
+		  <li>Ask the user for a base</li>
+		  <li>Ask the user for a power</li>
+		  <li>Use a <strong>for</strong> loop to determine the result</li>
+		  <li>Output the result</li>
+		</ul>
+		
+		Notes and Hints:
+		<ul>
+		  <li><b>You cannot use the ** operator in this exercise</b></li>
+		  <li>You can assume the user inputs integers</li>
+		  <li>ex. If the user enters a base of 2 and a power of 3, the result should be 8.</li>
+		</ul>
+	      </p>
+	      
+	      <br>
+	      <hr color="black"> 
+	      <br>
+	      
+	      <center><p><font color="#660000" size="5"><b>Extra - For the Ambitious</b></font></p></center>
+	      
+	      <p>Write a program <b>triangle.py</b> that draws a triangle as below:<br>
+	      *****<br>
+	      ****<br>
+	      ***<br>
+	      **<br>
+	      *
+	      </p>
+	      
+	      <br>
+	      <hr color="black"> 
+	      <br>			
+	      <center><p><font color="#660000" size="5"><b>Submission</b></font></p></center>
+	      
+	      <br>
+	      <p align="justify">Please submit your <b>changeMaker.py</b>
+		and <b>power.py</b> on websubmit under Lab 5.</b><br>
+		For your convenience: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105">WebSubmit</a>
+	      </p>
+	      
+	      <br>
+	      <hr color="black"> 
+	      <br>
+
+	      <center><p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a></p></center>
+	    </td>
+	  </tr>
+	</tbody>
+      </table>
+    </center>
+</body></html>

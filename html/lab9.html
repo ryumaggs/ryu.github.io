@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>CS 105 - Lab 9</title>
+	
+<style type="text/css"></style></head>
+
+<body>
+	<center>
+		<table width="90%">
+			<tbody>
+				<tr>
+					<td>
+						<table>
+							<tbody>
+								<tr>
+									<td width="816">
+										<font color="#660000" size="6"><left><b>Lab 9 - Data Mining</b></left></font>
+									<p></p></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><font color="#660000" size="5"><b>SQL or Data Mining?</b></font></center>
+						<br>
+						
+						<p> For each of the following, decide whether it should be solved using data mining or database queries. If you decide that the problem should be solved using data mining, specify which of the three approaches discussed in lecture (classification learning, numeric estimation, and association learning) makes the most sense: </p>
+						<ol>
+							<li> Given records of movies in a movie database, calculate the maximum, average, and minimum runtimes over all movies.</li>
+							<li> Given records of movies watched by online users, predict what other movies the users might like.</li>
+							<li> Given a sequence of images labelled as "contains a face" or "does not contain a face", predict if a new image contains a face or not.</li>
+							<li> Display/list all Computer Science students with GPA above 3.5.</li>
+							<li> We want to discover relationships between products sold by an e-store.</li>
+						</ol>
+						
+						<p>Save your results in <b>ans.txt</b></p>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><font color="#660000" size="5"><bDecision Treeb></font></center>
+							<br>
+							
+							<div align="center">
+								
+								<p>
+									Here are our training data:<br>
+									<img src="./data.jpg" width="641" height="468"><br>
+									<br>
+									<br>
+									Here is the decision tree:<br>
+									<img src="./dtree.gif" width="624" height="442"><br>
+								</p>
+								
+								<p>
+									&nbsp;<br>
+									Here are some test records:<br>
+									[22 , high , no , fair , yes]<br>
+									[45 , high , no , excellent , no]<br>
+									[32 , low , yes , excellent , yes]<br>
+									[25 , low , yes , fair , no]<br>
+									[50 , low , no , fair , yes]<br>
+									How would our decision tree classify these records?<br>
+									How would our confusion matrix look like?<br>
+								</p>
+								
+								<p>Save your results in <b>ans.txt</b></p>
+								
+							</div>
+							
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center><font color="#660000" size="5"><b>Python Practice: Reading from files</b></font></center>
+							<br>
+							
+							<p>
+								Download <a href="./children_per_woman.csv">this</a> csv
+								file and <a href="./scrub.py">this</a> program file (right click -&gt save as). <b>Save these files to the same location.</b> <br>
+								The csv file contains information about the average number of children per
+								woman in many different countries for the years 1989 and 2009. 
+								The program file is some starter code for this lab.
+							</p>
+							
+							<p>
+								Before we use the data in any data mining or visualization
+								procedure, we usually want to correct them, purge them or even transform
+								them into something new. As an example to that, the dataset you downloaded
+								has some missing values. One way to cope with them is the following: If
+								only one number is missing (i.e. for either 1989 or 2009 we don't have any
+								statistics for that country), give it the value of the other year. If both
+								are missing, do not include them in the final dataset.
+							</p>
+							
+							<ol>
+								<li>First open up the csv file in excel and familiarize yourself with the data</li>
+								<li>Next, edit the provided program file to 'scrub' the .csv file</li>
+								<li>Run the completed program and check your results file</li>
+								<li>If you have time, upload this file to <a href="http://many-eyes.com/">Many-Eyes</a> and
+								see what visualizations you can create to depict this information</li>
+								<li>Or play around with the data in excel and see what kind of graphs might work for this data set</li>
+							</ol>
+
+							<p>Save your altered program file as <b>my_scrub.py</b></p>
+
+							
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center><font color="#660000" size="5"><b>Submission</b></font></center>
+							<br>
+							
+							<p align="justify">Please submit your <b>ans.txt</b> and <b>my_scrub.py</b> on websubmit under Lab 9.<br>
+								For your convenience: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105">WebSubmit</a>
+							</p>
+							
+							<hr color="black">
+							
+							<p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</body>
+</html>			

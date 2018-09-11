@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>CS 105 - Lab 3</title>
+	
+<style type="text/css"></style><style type="text/css"></style></head>
+
+<body>
+	<center>
+		<table width="90%">
+			<tbody>
+				<tr>
+					<td>
+						<table>
+							<tbody><tr><td width="816">
+								<font color="#660000" size="6"><left><b>Lab 3 - Queries</b></left></font>
+							</td></tr></tbody>
+						</table>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center>
+							<font color="#660000" size="5"><b>1. Open database with SQLite Manager</b></font>
+						</center>
+						
+						<font color="#660000" size="4"><b>Downloading the necessary software</b></font><br>
+						<ol>
+							<li>Start Firefox up and <b>use Firefox</b> to go to the following page: <a href="https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/" target="top">https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/</a>.</li>
+							<li>Click the green <i>Add to Firefox</i> button to add SQLite Manager to Firefox. If asked, click the <i>Install Now</i> button.</li>
+							<li>Close and relaunch Firefox to allow the add-on to take effect.</li>
+						</ol>
+						
+						<font color="#660000" size="4"><b>Downloading the necessary files</b></font><br>
+						<p>
+							Download the university database by right-clicking on the following link: <a href="http://cs-people.bu.edu/dgs/courses/cs105/13fall/labs/files/university.sqlite">university.sqlite</a><br>
+							Use the <i>Save link as...</i> (or equivalent) option to save it somewhere that you will be able to find it later. This file contains all of the tables from the movie database. However, 
+							because it isn't a text file, you will <i>not</i> be able to read it using a text editor. Instead, SQLite Manager will process it for you, according to the SQL commands that you enter.   
+						</p>
+						
+						<font color="#660000" size="4"><b>Using SQLite Manager</b></font>
+						<ol>
+							<li>Start up Firefox.</li>
+							<li>If the SQLite icon appears in the menubar, click it to open SQLite Manager.</li>
+							<ul><li>If it does not:</li>
+								<ul>
+									<li>Right click the top of the firefox window and make sure "Menu Bar" is checked off</li>
+									<li>Click on <i>Tools-&gt;SQLite Manager</i></li>
+								</ul>
+							</ul>
+							<li>In the SQLite Manager window, use the <i>Database-&gt;Connect Database</i> 
+							menu option to find and open the <i>university.sqlite</i> database file that you downloaded above.</li>
+							<li>To explore the contents of the database, click on the name of a table in the left-hand navigation bar, 
+								and then click on either the <i>Structure</i> or <i>Browse &amp; Search</i> tabs. <br>
+							<b>Note:</b> SQLite adds a <i>rowid</i> column to each table. You should ignore this column for the purposes of this assignment.</li>
+							<li>Use the <i>Execute SQL</i> tab to perform queries on the database, replacing the sample command that is 
+							provided (if any) with your  own SQL command, and clicking the <i>Run SQL</i> button. </li>	
+						</ol>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center>
+							<font color="#660000" size="5"><b>2. Database Schema</b></font>
+						</center>
+						
+						<p>For your reference, the database has the following schema:</p>
+						<div align="center">
+							<table width="400" border="1">
+								<tbody><tr>
+									<td bgcolor="#CCFFCC">
+										<p align="center">Student(id,
+											name)<br>
+											Department(name, office)<br>
+											Room(id, name, capacity)<br>
+											Course(name, start, end, room)<br>
+											MajorsIn(student, dept)<br>
+										Enrolled(student, course, credit_status)</p>
+									</td>
+								</tr></tbody>
+							</table>
+						</div>
+						
+						<br>
+						<hr color="black">
+						
+						<center>
+							<font color="#660000" size="5"><b>3. Review of Aggregate Functions and Subqueries</b></font>
+						</center>  
+						
+						<center>
+							<p align="justify">Here we have a query:</p>
+							
+							<div align="center">
+								<table border="1">
+									<tbody>
+										<tr>
+											<td bgcolor="#ccffcc">
+												<p><font face="Courier New, Courier, mono">SELECT credit_status,COUNT(*)<br>
+													FROM Enrolled<br>
+												GROUP BY credit_status;</font></p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							
+							<p align="justify">How could we change the above query to only show credit status of popular course? That is, courses with at least two enrollments?
+							</p>
+							
+							<div align="center">
+								<table border="1">
+									<tbody>
+										<tr>
+											<td bgcolor="#ccffcc">
+												<font face="Courier New, Courier, mono">SELECT student, credit_status<br>
+													FROM Enrolled<br>
+													WHERE course IN (SELECT course <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FROM Enrolled <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP BY course <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HAVING COUNT(*)&gt;1);
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</center>
+							
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center>
+								<font color="#660000" size="5"><b>4. Joins</b></font>
+							</center>
+							
+							<p>What is the meaning of the result of the following query? </p>
+							<p align="left"></p>
+							<div align="center">
+								<table width="450" border="1">
+									<tbody><tr>
+										<td width="450" height="76" bgcolor="#CCFFCC">
+											<p><font face="Courier New, Courier, mono">SELECT
+											*<br> FROM Department, Student, MajorsIn;</font></p></td>
+									</tr></tbody>
+								</table>
+							</div>
+							<p align="justify">The following query includes two join conditions.  In general, if you have N tables in the FROM clause, you need N - 1 join conditions.</p>
+							<div align="center">
+								<table width="450" border="1">
+									<tbody><tr>
+										</tr><tr>
+										<td width="450" height="76" bgcolor="#CCFFCC">
+											<p><font face="Courier New, Courier, mono">SELECT
+											*<br> FROM Department, MajorsIn, Student <br> WHERE Department.name = MajorsIn.dept and Student.id = MajorsIn.student;</font></p></td>
+									</tr></tbody>
+								</table>
+							</div>
+							
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center>
+								<font color="#660000" size="5"><b>5. Writing Queries: Rules of Thumb</b></font>
+							</center>
+							
+							<div align="left">		
+								<ol>
+									<li>Start with the FROM clause</li>
+									<li>If you need more than one table, determine the necessary join conditions </li>
+									<li>Determine if a GROUP BY clause is needed</li>
+									<li>Determine any other conditions that are needed</li>
+									<li>Fill in the rest of the query: SELECT, ORDER BY</li>
+								</ol>
+							</div>
+							
+							<br>
+							<hr color="black">
+							<br>
+							
+							<center>
+								<font color="#660000" size="5"><b> 6. Practice</b></font>
+							</center>
+							
+							<div align="left">
+								<ol>
+									<li>Write a query to select the room with the maximum capacity.</li>
+									<li>Write a query that counts the students for every major (in the MajorsIn relation) and prints the count and the department name.</li>
+									<li>Write the name and the capacity of the roomthat course CS 105 is taught.</li>
+									<ul><li>There are two ways of doing this, but try using an inner join.</li></ul>
+									<li>Write a query that lists all departments whose names consist of more than one word. </li>
+									<li>Write a query that selects all the names of the rooms with 50&lt;capacity&lt;250 <strong>or</strong> with a name that does <strong>not</strong> contain the letter 'A'.</li>
+									<li>Write a query<strong> </strong>that counts the students majoring in computer science.</li>
+									<li>Write a query that outputs the names, the courses, the room, the start_times and end_times of all undergraduate students(join 4 tables!)</li>
+									<li>Create a list of all students who are not enrolled in 'CS 105'</li>
+									<ul><li>Try using the IN keyword.</li></ul>
+									<li>Create a list of all students and their courses.  Include students who are not taking courses.</li>
+									<ul><li>Try using an OUTER JOIN.</li></ul>
+
+								</ol>
+							</div>
+							
+
+							<br>
+							<hr color="black"> 
+							<br>			
+							
+    							<center><p><font color="#660000" size="5"><b> 7. Submission</b></font></p></center>
+
+							<br>
+    							<p align="justify"><b>Please submit your queries for the practice problems on websubmit under Lab 3.</b><br>
+							For your convenience: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105">WebSubmit</a>
+							</p>
+
+
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center>
+							<p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a></p>
+						</center>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+</body>
+</html>

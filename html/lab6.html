@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>CS 105 - Lab 6</title>
+		<style type="text/css"></style><style type="text/css"></style>
+	</head>
+	<body>
+		<body>
+			<center>
+				<table width="90%">
+					<tbody>
+						<tr>
+							<td> 
+								<table>
+									<tbody><tr><td width="816">
+										<font color="#660000" size="6"><left><b>Lab 6 - Python Fundamentals III</b></left></font>
+									</td></tr></tbody>
+								</table>
+								
+								<br>
+								<hr color="black"> 
+								<br>
+								
+								<center><font color="#660000" size="5"><b>Objectives</b></font></center>
+								<br>
+								
+								<ol>
+									<li>Review of String manipulation</li>
+									<li>Review of <b>if</b> statements</li>									
+									<li>Practice with both</li>
+								</ol>
+								
+								<br>
+								<hr color="black"> 
+								<br>
+								
+								<center><font color="#660000" size="5"><b>Accessing Characters in a String</b></font></center>
+								
+								<p align="left">Consider the following string:
+									<ul><li>x = "CS 105 is awesome"</li></ul>
+									What would the following expressions produce?
+								</p>
+								
+								<ul>
+									<li>x[0]</li>
+									<li>x[-1]</li>
+									<li>x[0:6]</li>
+									<li>x[10:17] + x[6:10] + x[0:6]</li>
+									<li>x[:4]</li>
+									<li>x[5:]</li>
+									<li>x[0:2] * 3</li>
+								</ul>
+								
+								<p align="left">Given x, what expression would result in "105" using negative indices?</p>
+								
+								<br>
+								<hr color="black"> 
+								<br>
+								
+								<center><font color="#660000" size="5"><b>Working with Strings</b></font></center>
+								
+								<p><font color="#660000" size="4"><b>Creating String expressions</b></font></p>
+								
+								<p>
+									Execute the following statements in Python:
+									<pre>str1 = "Go"<br>str2 = "Terriers!"</pre>
+									
+									Now, for each of the following values, construct a Python expression involving
+									string operations on <code>str1</code> and/or <code>str2</code> that evaluates to that
+									value.
+								</p>
+								
+								<ol type="i">
+									<li>&nbsp;&nbsp;&nbsp;&nbsp;<code>"Go Terriers!"</code> &nbsp;&nbsp;&nbsp; use "+"</li>
+									<li>&nbsp;&nbsp;&nbsp;&nbsp;<code>"GOT!"</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; use the upper() function</li>
+									<li>&nbsp;&nbsp;&nbsp;&nbsp;<code>'Torriors!'</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; use the replace() function</li>
+								</ol>
+								
+								<p><font color="#660000" size="4"><b>Using the "in" keyword</b></font></p>
+								
+								<p align="left">Consider the following expression:</p>
+								
+								<p align="left"><code>&gt;&gt;&gt; "base" in "datacase"</code></p>
+								
+								<p align="left">What is the <strong>type</strong> of this expression?</p>								
+								
+								<p><font color="#660000" size="4"><b>Splitting strings</b></font></p>
+								
+								<p>Consider the following lines of code executed sequentially: </p>
+								<ul><code>
+									<li>temp= "There's four new colors in the rainbow, an old man's taking polaroids"</li>
+									<li>parts1=temp.split()</li>
+									<li>parts2=temp.split(",")</li>
+									<li>temp1=" ".join(parts1)</li>
+									<li>temp2=" ".join(parts2)</li>
+								</code></ul>
+								
+								<p>Is <code>temp1==temp</code>?</p>
+								<p>What about <code>temp2==temp</code>?</p>
+								What does the following command do?
+								<pre>&gt;&gt;&gt; temp.replace(" ", ";")</pre>
+								
+								<br>
+								<hr color="black"> 
+								<br>
+								
+								<center><font color="#660000" size="5"><b>Exercise 1: Printing vertically</b></font></center>
+								
+								<p>For this exercise you will write a program <b>vert.py</b> which read a sentence fro the user and then print each word on its own line.</p>
+								
+								<p><em>Example: if the user inputs "I would like to print vertically" then the output should be:</em>
+									<pre>I<br>would<br>like<br>to<br>print<br>vertically</pre>
+								</p>
+								
+								<p> Hint: You will the need <strong>string split method</strong> a <strong>for loop</strong> and possibly the <strong>len()</strong> function.</p>
+								
+								
+								<br>
+								<hr color="black"> 
+								<br>
+								
+								<center><font color="#660000" size="5"><b>If Statements</b></font></center>
+								
+								<p><code>
+									if &lt;condition&gt;:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&lt;statements&gt;<br>
+									elif &lt;condition&gt;:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&lt;statements&gt;<br>
+									else :<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&lt;statements&gt;
+								</code></p>
+								
+								<p align="justify"><strong>Example:</strong> What is the output of the
+									following program?
+									<br>x = 9
+									<br>y = 2
+									<br>if x/y &gt; 4:
+									<br>&nbsp;&nbsp;&nbsp;&nbsp;print("if")
+									<br>else:
+									<br>&nbsp;&nbsp;&nbsp;&nbsp;print("else")
+									<br>print("end")
+								</p>
+								
+								<div align="left">
+									
+									<br>
+									<hr color="black"> 
+									<br>
+									
+									<center><font color="#660000" size="5"><b>Exercise 2: Maximum of 3 Integers</b></font></center>
+									
+									<p align="left">For this exercise you will write <b>max.py</b>, a program which asks the user for 3 integers and outputs the maximum of them.</p>
+									
+									<p>Example Execution:<br>
+										<font color="blue">Please enter an integer:</font> 7<br>
+										<font color="blue">Please enter an integer:</font> 42<br>
+										<font color="blue">Please enter an integer:</font> 3<br>
+										<font color="blue">The maximum of 7, 42, and 3 is 42.</font>
+									</p>
+									
+									<br>
+									<hr color="black"> 
+									<br>			
+									<center><p><font color="#660000" size="5"><b>Submission</b></font></p></center>
+									
+									<br>
+									<p align="justify">Please submit your <b>vert.py</b>
+									and <b>max.py</b> on websubmit under Lab 6.</b><br>
+									For your convenience: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105">WebSubmit</a>
+								</p>
+								
+								<br>
+								<hr color="black"> 
+								<br>
+								
+								<p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a></p>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</center>&nbsp;
+		</body>
+	</html>																			

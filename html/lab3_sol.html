@@ -1,0 +1,63 @@
+<html><head><meta http-equiv="Content-Type" content="text; charset=UTF-8"><style type="text"></style></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">
+
+1.	SELECT name
+	FROM Room
+	WHERE capacity = (
+		SELECT MAX(capacity)
+		FROM(Room)
+	);
+
+2.	SELECT dept, COUNT(*)
+	FROM MajorsIn
+	GROUP BY dept;
+
+3.	SELECT Room.name, capacity 
+	FROM Room, Course 
+	WHERE Course.name = 'CS 105' AND Room.id = Course.room;
+
+	-OR-
+
+	SELECT name, capacity 
+	FROM room
+	WHERE id = (
+		SELECT room
+		FROM Course
+		WHERE name = 'CS 105'
+	);
+
+4.	SELECT name
+	FROM Department
+	WHERE name LIKE '% %';
+
+5.	SELECT name
+	FROM Room
+	WHERE (50 &lt; capacity AND capacity &lt; 250) OR name NOT LIKE '%A%' ;
+
+6.	SELECT COUNT(*) 
+	FROM MajorsIn
+	WHERE dept = 'comp sci';
+
+7.	SELECT S.name, C.name, R.name, C.start_time, C.end_time
+	FROM Student AS S, Enrolled AS E, Room AS R, Course AS C
+	WHERE S.id = E.student AND E.course = C.name AND C.room = R.id AND E.credit_status ='ugrad' ;
+
+	-OR-
+	
+	SELECT Student.name, Course.name, Room.name, start_time, end_time
+        FROM Student, Course, Room, Enrolled 
+	WHERE Student.id = Enrolled.student AND Room.id = Course.room AND 
+	Enrolled.course = Course.name AND credit_status = 'ugrad';
+
+8.	SELECT Student.name
+	FROM Student
+	WHERE Student.id NOT IN (
+		SELECT student
+		FROM Enrolled
+		WHERE course = 'CS 105' 
+	);
+
+9.	SELECT Student.name, Enrolled.course
+	FROM Student LEFT OUTER JOIN Enrolled
+	ON Student.id = Enrolled.student;
+
+</pre></body></html>

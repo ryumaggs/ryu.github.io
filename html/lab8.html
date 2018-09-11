@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>CS 105 - Lab 8</title>
+		<style type="text/css"></style><style type="text/css"></style>
+	</head>
+	<body>
+		<center>
+			<table width="90%">
+				<tbody>
+					<tr>
+						<td>
+							<table>
+								<tbody>
+									<tr>
+										<td width="816">
+											<font color="#660000" size="6"><left><b>Lab 8 - Database Accessing and File Processing</b></left></font>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center><font color="#660000" size="5"><b>Exercise 1</b></font></center>
+							<br>
+							
+							<p>
+								For this exercise you will write <b>writePeople.py</b>, a program which 
+								<ol>
+									<li>connects to a modified version of the movie database</li>
+									<li>performs a query</li>
+									<li>prints the results to a file named 'people.txt' in a specified format</li>
+									
+								</ol>
+								You can find the modified movie database here: <a href="http://cs-people.bu.edu/dgs/courses/cs105/13fall/labs/files/movie_modified.sqlite">movie_modified.sqlite</a>.<br>
+								This database contains a table named <i>Person</i> which has the following schema:
+								<font face="Courier New, Courier, mono">Person(<u>id</u>, name,dob, pob)</font> <br>
+								Write the whole table into people.txt with the following format: <font face="Courier New, Courier, mono">id name dob pob</font> <br>
+								However, you need to change the format of dob from <b>yyyy-mm-dd</b> to <b>mm/dd/yyyy.</b> <br>
+								<br>
+								Note: some people do not have (recorded) dates of birth, because of this you may use "WHERE dob IS NOT NULL" <br>
+								Hint: Write a for loop that prints all of the results, THEN in the same for loop, reformat the date of birth THEN worry about writing to a file.
+							</p>
+							
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center><font color="#660000" size="5"><b>Exercise 2</b></font></center>
+							<br>
+							
+							<p>
+								For this exercise you will write <b>processMovies.py</b>, a program which 
+								<ol>
+									<li>opens a file</li>
+									<li>reads the contents of that file</li>
+									<li>prints a subset of the contents read into another file 'movie_processed.txt'</li>
+								</ol>
+								
+								The input file you'll be working with is: <a href="http://cs-people.bu.edu/dgs/courses/cs105/13fall/labs/files/movie.txt">movie.txt</a>. <br>
+								This file stores date with the following format: <font face="Courier New, Courier, mono">id|name|year|rating|runtime|genre|earnings_rank</font> <br>
+								
+								The new file keep the following information with the following format: <font face="Courier New, Courier, mono">name year runtime</font> <br>
+								Also, add "name year runtime" as the first line of the output file. <br>
+								<br>
+								Recall that to read from a file, you need to use the following statements:
+							</p>
+							<p align="left">
+								<font face="Courier" size="2">
+									&nbsp;&nbsp;&nbsp; infile = open('yourfilename.txt', 'r') <br>
+									&nbsp;&nbsp;&nbsp; for line in infile:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#code to process each line<br>
+									&nbsp;&nbsp;&nbsp; infile.close()
+								</font>
+							</p>
+							
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center><font color="#660000" size="5"><b>Exercise 3 - Optional</b></font></center>
+							<br>
+							
+							<p>
+								For this exercise you will write <b>moviePeriods.py</b>, a program which again connects to  
+								the movie_modified.sqlite database. Within the database is another table <i>Movie</i> which has following schema:
+							</p>
+							<font face="Courier New, Courier, mono">
+								Movie(<u>id</u>, name, year, rating, runtime, genre, earnings_rank )
+							</font> 
+							
+							<p>Our task is to count the number of movies in three time periods: 
+								Before 1960, From 1960 to 2000, After 2000. Then, save the results into a file with the following format: 
+							</p>
+							<p align="left">
+								<font face="Courier" size="2">
+									&nbsp;&nbsp;&nbsp;Year Range&nbsp;&nbsp;&nbsp;&nbsp;Number of Movies<br>
+									&nbsp;&nbsp;&nbsp;Before 1960&nbsp;&nbsp;&nbsp;120<br>
+									&nbsp;&nbsp;&nbsp;1960-2000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;258<br>
+									&nbsp;&nbsp;&nbsp;After 2000&nbsp;&nbsp;&nbsp;&nbsp;236<br>
+								</font>
+							</p>
+							
+							<p>
+								Hint: Execute one query to get the whole table. Then, do a post-processing of these results with Python code. You will need to keep
+								a list of counters, one for each time period. Then, for every record in the result, you will need to decide which counter to update.
+								When you print the results to file, remember to use '\t'. <br>
+								<br>
+								You could do this task using multiple queries, but since using a single query is more efficient, please try to use only one.
+							</p>
+							
+							<br>
+							<hr color="black"> 
+							<br>			
+							<center><p><font color="#660000" size="5"><b>Submission</b></font></p></center>
+							
+							<br>
+							<p align="justify">Please submit your <b>printPeople.py</b>, <b>processMovies.py</b>, and <b>moviePeriods.py</b> on websubmit under Lab 8.<br>
+								For your convenience: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105">WebSubmit</a>
+							</p>
+							
+							<hr color="black">
+							<p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>	
+	</body>
+</html>										

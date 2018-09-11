@@ -1,0 +1,63 @@
+Association Learning
+
+1.  
+
+Support=3
+Confidence=3/6=0.5
+
+2.  
+(a) 
+
+three-item sets:
+
+spectacle_prescr = myope, astigmatism = yes, tear-prod-rate = reduced
+spectacle_prescr = myope, astigmatism = yes, tear-prod-rate = normal
+spectacle_prescr = myope, astigmatism = yes, contact-lenses = none
+spectacle_prescr = myope, astigmatism = no, tear-prod-rate = reduced
+spectacle_prescr = myope, astigmatism = no, tear-prod-rate = normal
+spectacle_prescr = myope, astigmatism = no, contact-lenses = none
+spectacle_prescr = myope, tear-prod-rate = reduced, contact-lenses = none
+spectacle_prescr = myope, tear-prod-rate = normal, contact-lenses = none
+spectacle_prescr = hypermetrope, astigmatism = no, tear-prod-rate = reduced
+spectacle_prescr = hypermetrope, astigmatism = yes, tear-prod-rate = reduced
+
+(b) 
+
+3-item set (support 4):
+
+spectacle_prescr = myope, astigmatism = yes, tear-prod-rate = reduced
+spectacle_prescr = myope, astigmatism = no, contact-lenses = none
+
+(c) 
+
+For the first 3-items set, any 2 of the following would be correct:
+
+if spectacle_prescr = myope 
+then astigmatism = yes and tear-prod-rate = reduced;
+if astigmatism = yes
+then spectacle_prescr = myope and tear-prod-rate = reduced;
+if tear-prod-rate = reduced
+then spectacle_prescr = myope and astigmatism = yes;
+if spectacle_prescr = myope and astigmatism = yes 
+then tear-prod-rate = reduced;
+if spectacle_prescr = myope and tear-prod-rate = reduced
+then astigmatism = yes;
+if astigmatism = yes and tear-prod-rate = reduced
+then spectacle_prescr = myope
+
+I will select the following 2:
+
+Rule 1:
+if astigmatism = yes
+then spectacle_prescr = myope and tear-prod-rate = reduced;
+
+Rule 2:
+if astigmatism = yes and tear-prod-rate = reduced
+then spectacle_prescr = myope
+
+
+Rule 1 has confidence of 4/12 = 0.33
+Rule 2 has confidence of 4/6 = 0.67
+
+(d)
+Rule 2 has higher confidence than Rule 1

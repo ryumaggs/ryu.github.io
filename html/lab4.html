@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>CS 105 - Lab 4</title>
+	<!-- Change the title for each lab. -->
+	
+<style type="text/css"></style><style type="text/css"></style></head>
+
+<body>
+	<center>
+		<table width="90%">
+			<tbody>
+				<tr>
+					<td> 
+						<table>
+							<tbody>
+								<tr>
+									<td width="816">
+										<font color="#660000" size="6"><left><b>Lab 4 - Python Fundamentals I</b></left></font>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><font color="#660000" size="5"><b>Objectives</b></font></center>
+						
+						<ol>
+							<li>Using <strong>IDLE</strong></li>
+							<li><strong>Basics</strong>: variables, operators and assignments</li>
+							<li><strong>Python Programs</strong></li>
+						</ol>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><p><font color="#660000" size="5"><b>IDLE - Integrated DeveLopment Environment</b></font></p></center>
+						
+						<font color="#660000" size="5"><b></b></font> <p align="justify">IDLE is a tool for interacting with Python
+						and writing Python programs. IDLE is convenient for a number of reasons:</p>
+						<ul>
+							<li>it gives the appropriate indentification</li>
+							<li>it uses <font color="#800080">co</font><font color="#008000">lo</font><font color="#FFA500">rs</font>
+							for <font color="#990000">reserved</font> words, "<font color="#999900">strings</font>" etc..</li>
+							<li>it is easy to create a <font size="+1" face="Courier New, Courier, mono">.py</font> file</li>
+							<li>it runs on your own machine, can be downloaded from <a href="http://www.python.org/download/">http://www.python.org/download/</a></li>
+						</ul>
+						
+						<p>Let's take a tour: Python is installed in our lab <em>(Windows -&gt; All Programs -&gt; Python3.3 -&gt; IDLE).</em></p>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><p><font color="#660000" size="5"><b>Python Basics</b></font></p></center>
+						
+						<p>Try out the following commands and see what happens:</p>
+			
+						<ul>
+							<li>General
+								<ul>
+									<li>print("Hello, World!")</li>
+									<li>#print("Hello, World!")</li>
+									<ul>
+										<li>Commands that start with a "#" are comments</li>
+										<li>Comments are ignored by the interpreter</li>
+										<li>Comments should briefly explain what is going on, but only when necessary</li>
+									</ul>
+								</ul>
+							</li>
+							
+							<li>Assignment
+								<ul>
+									<li>x = 5</li>
+									<ul>
+										<li>"x" is a variable, and we are assigning it a value of 5.</li>
+									</ul>
+									<li>x=5</li>
+									<ul>
+										<li>Note: whitespace in code doesn't change, but can make your code more readable</li>
+									</ul>				
+									<li>my_variable = 12</li>
+									<ul>
+										<li>Variable names can be whatever we like</li>
+										<li>ProTip: Try to keep variable names relevant to the task at hand</li>
+									</ul>
+								</ul>
+							</li>
+							
+							<li>Comparison
+								<ul>
+									<li>x > 5</li>
+									<li>x == 5</li>
+									<li>x == 6 or x > 8</li>
+									<ul>
+										<li>Note: like in SQL you can use the words "and" and "or"</li>
+										<li>Note: unlike in SQL, "and" and "or" must be lowercase</li>
+									</ul>								
+								</ul>								
+							</li>
+							
+							<li>Input
+								<ul>
+									<li>z = input("Enter a number: ")</li>
+									<li>print(z)</li>
+									<li>z = eval(input("Enter a number: "))</li>
+									<li>print(z)</li>
+									<ul>
+										<li>What is the difference?</li>
+									</ul>								
+								</ul>								
+							</li>
+							<li>String Contatenation
+								<ul>
+									<li>print("Hello " + "World")</li>
+									<li>word2 = "Back!"</li>
+									<li>print("Hi " + word2)</li>
+								</ul>								
+							</li>
+						</ul>
+
+							<br>
+							<hr color="black"> 
+							<br>			
+							
+    							<center><p><font color="#660000" size="5"><b>Tracing Execution</b></font></p></center>
+
+						
+						<p>Please read the following lines and try to figure out the outputs without typing them in.</p>
+						
+						<ul>
+							<li>x = 5</li>
+							<li>print(x)</li>
+							<li>y = x + 5</li>
+							<li>print(x, y)</li>
+							<li>x = 8</li>
+							<li>print(x, y)</li>
+						</ul>
+						
+						<p>Now try these commands and see if you were right.</p>
+							
+						<br>
+
+						<p>Try the same thing for the following:</p>
+						
+						<ul>
+							<li>sum = 0</li>
+							<li>x = 2</li>
+							<li>print(x, sum)</li>
+							<li>y = 5</li>
+							<li>y = y - x</li>
+							<li>sum = x + y</li>
+							<li>print(x, y, sum)</li>
+						</ul>
+						
+						<p>Now try these commands and see if you were right.</p>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><p><font color="#660000" size="5"><b>Python Programs</b></font></p></center>
+						
+						<p>To write and test the program, do the following: </p>
+						<ol>
+							<li>Create a new program file in IDLE (File->New)</li>
+							<li>Write the program that 
+								<ul>
+									<li>Asks the user what their name is</li>
+									<li>Greets the user with "Hello &lt;entered name&gt; !"</li>
+								</ul>
+								<li>Save the program as <b>hello.py</b>.</li>
+								<li>Run it by using Run -&gt; Run Module or the F5 key.</li>
+								<br>
+								<li>Example execution:
+									<ul><font color="blue">Please enter your name:</font> John</ul>
+									<ul><font color="blue">Hello John!</font></ul>
+								</li>
+							</ol>
+							
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center><p><font color="#660000" size="5"><b>Extra - For the Ambitious</b></font></p></center>
+							
+							In a separate program file write and test a program that:
+							<ul>
+								<li>Asks the user for an integer</li>
+								<ul>
+									<li>Remember the difference between input("...") and eval(input("..."))</li>
+								</ul>	
+								<li>Multiplies the input by 10</li>
+								<li>Prints the result</li>
+							</ul>	
+
+							<br>
+							<hr color="black"> 
+							<br>			
+							
+    							<center><p><font color="#660000" size="5"><b>Submission</b></font></p></center>
+
+							<br>
+    							<p align="justify"><b>Please submit your hello.py on websubmit under Lab 4.</b><br>
+							For your convenience: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105">WebSubmit</a>
+							</p>
+
+							<br>
+							<hr color="black"> 
+							<br>
+							
+							<center><p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a></p></center>
+							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</body>
+</html>					

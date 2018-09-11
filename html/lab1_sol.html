@@ -1,0 +1,80 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css"></style></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">
+=========Practice Exercise: Understanding keys and constraints=========
+
+a.	id for Passenger table
+	number for Flight table
+	(person, flight) for BookedOn table
+
+	We need to assume that each person can book each flight only once 
+	or else there might be duplicate lines, which would violate the 
+	uniqueness constraint.
+
+b.	Yes, because it already contains a key, i.e. the number.
+
+c.	No, it is not a candidate key because it contains redundant information.
+
+d.	person and flight in the BookedOn table, which refer to the id of the 
+	Passenger table and the number of the Flight table respectively.
+
+e.	Adding (UA717, "San Francisco, CA", "Boston, MA") to Flight table would violate
+	the uniqueness constraint because there is another flight with the same 
+	flight number 
+
+f.	Adding (007, BA215) to the BookedOn table would violate the referential integrity 
+	constraint because there is no passenger with id 007 in the Passenger table.
+	
+
+=======Practice Exercise: A Real-World Database Application========
+
+1. Book titles, the names of borrowers, and addresses are examples of information that we 
+would store as strings.  Borrower ID's, book's ISBNs, and phone numbers are examples of 
+information that we would store as integers.  We might also want to store the time or date 
+of when a book has been borrowed or returned, luckily there are data types specially for 
+Date and Time, just as there are the data types for integers and strings. 
+
+2. Consider a scenario in which a person borrows a book. A set of
+operations should be done for this process. If there is a system failure
+during the process, depending on the order of the operations, there will be
+some problems. Assume that when a person borrows a book, the
+remaining capacity will be modified and then the book will be assigned
+to that person. If between these operations a system
+failure happens, and if there is only one copy of  the book remaining, then the person
+cannot borrow the book, even though he/she should be able to.
+
+3.  A database management systems provides: 
+ - Efficient storage, can drastically improve access times and storage space required to
+	use and store information.
+ - A logical view of data, abstracts away how the information is stored, allowing users
+	to focus on a relations, attributes, tuples, etc instead.
+ - Convenient query processing, borrowers may quickly and efficiently find the books that 
+	they may be looking for.
+
+4. Borrower (ID, name, phone, address)
+    Book (ISBN, title, author_ID)
+    Author (ID, name)
+    BookIn (copy_ID, book_ISBN, aisle, shelf, availability_status) 
+    BorrowedBy (copy_ID, borrower_ID, date)
+
+We assume that each copy can be found only in a specific place.
+
+The table BookIn shows all the copies of each book, the place where they are located and 
+their status (if they are available or the are taken). If someone borrows a book,
+we need only see which copy they borrowed and update its availability status.
+
+While you may argue that we need more information, this is a mini-scale
+schema.
+
+5. Borrower: ID
+   Book: ISBN
+   Author: ID
+   BookIn: copy_ID
+   BorrowedBy: copy_ID, borrower_ID
+
+The phone number is not a key for the table Person, because many family members may
+share the same phone number
+
+6. foreign keys:
+   author_ID and in Book table
+   book_ISBN in BookIn table
+   copy_ID and borrower_ID in BorrowedBy table
+</pre></body></html>

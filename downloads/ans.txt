@@ -1,0 +1,28 @@
+######################
+# SQL or Data Mining #
+######################
+
+1. SQL Query
+2. Data Mining - Classification Learning
+3. Data Mining - Classification Learning
+4. SQL Query
+5. Data Mining - Association Learning
+
+######################
+# Example Classifier #
+######################
+
+[22 , high , no , fair , yes] - no
+[45 , high , no , excellent , no] - no
+[32 , low , yes , excellent , yes] - yes
+[25 , low , yes , fair , no] -  yes
+[50 , low , no , fair , yes] - yes
+
+Confusion Matrix
+
+			Predicted Values
+			Yes	No
+Actual Values	Yes	2	1
+		No	1	1
+
+

@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>CS 105 - Lab 11</title>
+	
+<style type="text/css"></style><style type="text/css"></style></head>
+
+<body>
+	<center>
+		<table width="90%">
+			<tbody>
+				<tr>
+					<td>
+						<table>
+							<tbody>
+								<tr>
+									<td width="816">
+										<font color="#660000" size="6"><left><b>Lab 11 - Association Learning: The Apriori Algorithm</b></left></font> 
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><font color="#660000" size="5"><b>The Dataset</b></font></center>
+						<br>  
+						
+						This is the same dataset on <a href="http://archive.ics.uci.edu/ml/datasets/Lenses">contact lenses</a> as we saw in lab last week:
+						<br>
+						<br>
+						
+						<div align="center"> 							
+							<table border="1">
+								<tbody><tr> 									
+									<td><div align="center"><strong>AGE</strong></div></td>									
+									<td><div align="center"><strong>SPECTACLE-PRESCR</strong></div></td>									
+									<td><div align="center"><strong>ASTIGMATISM</strong></div></td>									
+									<td><div align="center"><strong>TEAR-PRODUCT-RATE</strong></div></td>									
+									<td><div align="center"><strong>CONTACT-LENSES</strong></div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">young</div></td>									
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">young</div></td>									
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">soft</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">young</div></td>									
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">yes</div></td>									
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">young</div></td>									
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">yes</div></td>									
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">hard</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">young</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 
+									<td><div align="right">young</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">soft</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">young</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">yes</div></td>									
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">young</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">yes</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">hard</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">pre-presbyopic</div></td>									
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">reduced</div></td>
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">pre-presbyopic</div></td>
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">soft</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">pre-presbyopic</div></td>									
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">yes</div></td>									
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 
+									
+									<td><div align="right">pre-presbyopic</div></td>									
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">yes</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">hard</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">pre-presbyopic</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">no</div></td>
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">pre-presbyopic</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">soft</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">pre-presbyopic</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">yes</div></td>
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">pre-presbyopic</div></td>								
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">yes</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">none</div></td>
+								</tr>								
+								<tr> 									
+									<td><div align="right">presbyopic</div></td>									
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>								
+								</tr>								
+								<tr> 								
+									<td><div align="right">presbyopic</div></td>								
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">presbyopic</div></td>									
+									<td><div align="right">myope</div></td>									
+									<td><div align="right">yes</div></td>									
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 
+									<td><div align="right">presbyopic</div></td>									
+									<td><div align="right">myope</div></td>	
+									<td><div align="right">yes</div></td>
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">hard</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">presbyopic</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">reduced</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">presbyopic</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">no</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">soft</div></td>
+								</tr>								
+								<tr> 									
+									<td><div align="right">presbyopic</div></td>									
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">yes</div></td>									
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								<tr> 									
+									<td><div align="right">presbyopic</div></td>
+									<td><div align="right">hypermetrope</div></td>									
+									<td><div align="right">yes</div></td>
+									<td><div align="right">normal</div></td>									
+									<td><div align="right">none</div></td>									
+								</tr>								
+								</tbody>
+							</table>
+						</div>
+						
+						<br>
+						<hr color="black"> 
+						<br>
+						
+						<center><font color="#660000" size="5"><b>Exercises</b></font></center>
+						<br>
+						Please answer the following questions in <b>answers.txt</b>.
+						
+						<br><br>
+						
+						1.  Use the training data above to compute support and confidence values for the following association rule: <br>
+						<pre>		if    spectacle-prescr=myope and astigmatism = no<br>		then  tear-prod-rate = reduced</pre>
+
+						<p>
+						2. Consider the following two-item sets of the above dataset:
+						</p>
+						
+						<pre>
+							spectacle-prescr=myope			astigmatism = yes
+							spectacle-prescr=myope		        astigmatism = no 
+							spectacle-prescr=myope			tear-prod-rate = reduced
+							spectacle-prescr=myope			tear-prod-rate = normal
+							spectacle-prescr=myope			contact-lenses = none
+							spectacle-prescr=hypermetrope		astigmatism = no 
+							spectacle-prescr=hypermetrope		astigmatism = yes 
+							spectacle-prescr=hypermetrope		tear-prod-rate = reduced
+						</pre>
+						
+					<b>Note:</b> These rules have a minimum support of 4 and this is only a subset of all possible two-item sets for the dataset
+						</ol>
+						
+						<p>
+							Recall that the Apriori algorithm creates larger item sets by taking the union of
+							smaller item sets that meet certain criteria. 
+							<br><br>
+							(a) List the three item sets we can generate from these two item sets, <b>regardless of support</b>.
+							<br><br>
+							(b) From your answer to (a), list only three item sets which have a minimum support of 4.
+							<br><br>
+							(c) From your answer to (b), pick one of your three item sets and list two different association rules that can be formed. 
+							<br><br>
+							(d) From your answer to (c), state which rule has a higher confidence.
+						</p>
+						
+						<br>
+							<hr color="black"> 
+							<br>
+							
+							<center><font color="#660000" size="5"><b>Submission</b></font></center>
+							<br>
+							
+							<p align="justify">Please submit your <b>answers.txt</b> on websubmit under Lab 11.<br>
+								For your convenience: <a href="http://cs-websubmit.bu.edu/main.py?courseid=cs105">WebSubmit</a>
+							</p>
+						
+						<hr color="black">
+						
+						<p align="justify"><a href="http://cs-people.bu.edu/dgs/courses/cs105">CS105</a></p>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+</body></html>
