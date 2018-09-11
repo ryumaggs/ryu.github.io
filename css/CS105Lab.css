@@ -4,6 +4,7 @@ a{
 
 a:link{
 	color:red;
+	text-decoration: none;
 }
 
 a:visited{
@@ -14,3 +15,11 @@ a:hover{
 	color: hotpink;
 }
 
+.column{
+	width: 50%;
+	float:left;
+}
+
+#pageTitle{
+	text-align:center;
+}
